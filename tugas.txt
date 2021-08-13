@@ -1,0 +1,35 @@
+# contoh exception buatan kita sendiri dari programiz.com
+class Error(Exception): # anak dari class Exception
+    """ Base class untuk exception lain """
+    pass
+
+class nilaiKekecilan(Error):
+    """ Dihasilkan jika nilai terlalu kecil"""
+    pass
+
+class nilaiKebesaran(Error):
+    """ Dihasilkan jika input terlalu besar"""
+    pass
+
+# tebak angka rahasia ini
+n =10
+
+while True:
+    try: 
+        tebakan= int(input("tulis sebuah angka:"))
+        if tebakan < n:
+            raise nilaiKekecilan
+        elif tebakan>n:
+            raise nilaiKebesaran
+        break
+    except nilaiKekecilan:
+        print("input terlalu kecil, pls coba lagi yah")
+    except nilaiKebesaran:
+        print("input terlalu besar, pls coba lagi yah")
+
+print("Hore.. selamat anda bisa menebaknya dengan tepat")
+
+# coba modifikasi program supaya menebak maksimum 10 kali
+# output akhir :
+#  -- anda berhasil menebak
+#  -- atau, anda tidak berhasil menebak setelah 10 kali mencoba
