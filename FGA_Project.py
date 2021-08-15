@@ -2,23 +2,68 @@ import tkinter
 from tkinter import ttk
 from tkinter.constants import END
 from PIL import ImageTk, Image
+from sklearn import tree
+
+
 
 #Def generate
 def clickgenerate():
-            if entry_tinggi.get()=="20" or entry_berat.get()=="20" or entry_sepatu.get()=="20": #angka link ke ML
-                lbl1=tkinter.Label(window, text="Hello Brother!", font=("Montserrat", 25), background='#f8f4f4')
+           # if entry_tinggi.get()=="20" or entry_berat.get()=="20" or entry_sepatu.get()=="20": #angka link ke ML
+            #    lbl1=tkinter.Label(window, text="Hello Brother!", font=("Montserrat", 25), background='#f8f4f4')
+             #   lbl1.place(x=485, y=417)
+              #  lbl_pria.configure(image=img_pria, background='#f8f4f4')
+            #elif entry_tinggi.get()=="10" or entry_berat.get()=="10" or entry_sepatu.get()=="10": #angka link ke ML
+             #   lbl2=tkinter.Label(window, text="Hay Sister!", font=("Montserrat", 25), background='#f8f4f4')
+              #  lbl2.place(x=500, y=417)
+               # lbl_wanita.configure(image=img_wanita, background='#f8f4f4')
+
+           data = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37],
+                   [166, 65, 40], [190, 90, 47], [175, 64, 39], [165, 49, 40],
+                   [171, 75, 42], [157, 55, 39], [181, 85, 43], ]
+
+           # data gender,berurut sesuai dengan datanya (merujuk variabel data)
+           gender = ['pria', 'pria', 'wanita', 'wanita',
+                     'wanita', 'pria', 'pria', 'wanita',
+                     'pria', 'wanita', 'pria', ]
+
+           # memanggil metode DecisionTreeClassifier() dari onjek tree
+           klasifikasi = tree.DecisionTreeClassifier()
+           # training data, memanggil metode fit(param), param = data dan gender
+           klasifikasi = klasifikasi.fit(data, gender)
+
+           # memasukkan data baru untuk di prediksi
+           # memanggil metode predict([data])
+           databaru = []
+           databaru.append(entry_tinggi.get())
+           databaru.append(entry_berat.get())
+           databaru.append(entry_sepatu.get())
+           prediksi = klasifikasi.predict([databaru])
+           # print hasil prediksi
+           print(databaru)
+           # print(type(data))
+           print(prediksi)
+
+           if prediksi == "wanita" :
+                lbl1 = tkinter.Label(window, text="Hay Sister!", font=("Montserrat", 25), background='#f8f4f4')
                 lbl1.place(x=485, y=417)
-                lbl_pria.configure(image=img_pria, background='#f8f4f4')
-            elif entry_tinggi.get()=="10" or entry_berat.get()=="10" or entry_sepatu.get()=="10": #angka link ke ML
-                lbl2=tkinter.Label(window, text="Hay Sister!", font=("Montserrat", 25), background='#f8f4f4')
-                lbl2.place(x=500, y=417)
                 lbl_wanita.configure(image=img_wanita, background='#f8f4f4')
+           elif prediksi == "pria" :
+               lbl1 = tkinter.Label(window, text="Hello Brother!", font=("Montserrat", 25), background='#f8f4f4')
+               lbl1.place(x=485, y=417)
+               lbl_pria.configure(image=img_pria, background='#f8f4f4')
+
 
 #Def Clear
 def clickclear():
     entry_tinggi.delete(0, END)
     entry_berat.delete(0, END)
     entry_sepatu.delete(0, END)
+    lbl_pria.configure(image='', background='#f8f4f4')
+    lbl_wanita.configure(image='', background='#f8f4f4')
+    lbl1 = tkinter.Label()
+    lbl1['text'] = ""
+
+
 
 #Main Window
 window = tkinter.Tk()
@@ -26,6 +71,7 @@ window.geometry("1200x500")
 window.resizable(0,0)
 window.title('Gender Guess Machine')
 window.iconbitmap('logogender.ico')
+
 
 #Image.Tk (pop up image)
 logo_pria = "logopria.png"
