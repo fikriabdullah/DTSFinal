@@ -4,8 +4,6 @@ from tkinter.constants import END
 from PIL import ImageTk, Image
 from sklearn import tree
 
-
-
 #Def generate
 def clickgenerate():
            # if entry_tinggi.get()=="20" or entry_berat.get()=="20" or entry_sepatu.get()=="20": #angka link ke ML
@@ -15,6 +13,8 @@ def clickgenerate():
             #elif entry_tinggi.get()=="10" or entry_berat.get()=="10" or entry_sepatu.get()=="10": #angka link ke ML
              #   lbl2=tkinter.Label(window, text="Hay Sister!", font=("Montserrat", 25), background='#f8f4f4')
               #  lbl2.place(x=500, y=417)
+
+              
                # lbl_wanita.configure(image=img_wanita, background='#f8f4f4')
 
            data = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37],
