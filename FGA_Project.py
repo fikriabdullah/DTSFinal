@@ -120,3 +120,30 @@ lbl_test = tkinter.LabelFrame(frame_model) #Dummy Frame
 lbl_test.pack() #Dummy Frame
 
 window.mainloop()
+
+
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# from sklearn.model_selection import train_test_split # Import train_test_split function
+# from sklearn import tree # decision tree
+
+# #Mengambil dataset
+# df = pd.read_csv('Downloads/weight-height.csv')
+
+# # Mengambil feature dan target
+# feature_cols = ['Height', 'Weight']
+# X = df[feature_cols]
+# y = df['Gender']
+
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) # 70% training and 30% test
+
+# # memanggil metode DecisionTreeClassifier() dari onjek tree
+# clf = tree.DecisionTreeClassifier(max_depth=3)
+# # training data, memanggil metode fit(param), param = data dan gender
+# clf = clf.fit(X_train, y_train)
+
+# # memasukkan data baru untuk di prediksi
+# # memanggil metode predict([data])
+
+# databaru = [32, 162]
+# y_pred = clf.predict([databaru]) #Ditampilkan untuk hasil prediksi
