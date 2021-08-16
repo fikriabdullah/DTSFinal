@@ -147,3 +147,25 @@ window.mainloop()
 
 # databaru = [32, 162]
 # y_pred = clf.predict([databaru]) #Ditampilkan untuk hasil prediksi
+
+
+
+
+# Update untuk ukuran sepatu
+
+# df = pd.read_csv('prediksi_gender.csv')
+
+# feature_cols = ['tinggi', 'berat', 'ukuran_sepatu']
+# X = df[feature_cols]
+# y = df['gender']
+
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42) # 70% training and 30% test
+
+# plt.figure(figsize=(8, 8))
+# tree.plot_tree(clf, filled=True)
+
+# y_train_pred = clf.predict(X_train)
+# y_test_pred = clf.predict(X_test)
+
+# print(accuracy_score(y_train, y_train_pred))
+# confusion_matrix(y_train, y_train_pred)
