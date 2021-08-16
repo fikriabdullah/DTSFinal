@@ -45,15 +45,17 @@ def clickgenerate():
     elif y_pred == "Female":
         lbl_output.configure(image=img_wanita, background='#f8f4f4')
 
-
-
-
 #Def Clear
 def clickclear():
     entry_tinggi.delete(0, END)
     entry_berat.delete(0, END)
     lbl_output.configure(image = "", background='#f8f4f4' )
     img.configure(image = "")
+    visLbl.configure(image = "", background='#f8f4f4')
+
+def modelVisual():
+    img.configure(image = imgVis, background = '#f8f4f4')
+    visLbl.configure(image = lblVis, background = '#f8f4f4')
 
 window = tkinter.Tk()
 window.geometry("1200x500")
@@ -67,8 +69,15 @@ logo_wanita = "output_wanita.png"
 img_pria = ImageTk.PhotoImage(Image.open(logo_pria))
 img_wanita = ImageTk.PhotoImage(Image.open(logo_wanita))
 
+visImage = Image.open("model.png")
+visImageResize = visImage.resize((500, 400), Image.ANTIALIAS)
+imgVis = ImageTk.PhotoImage(visImageResize)
+
+vislbl = Image.open("lbl_visualisasi.png")
+lblVis = ImageTk.PhotoImage(vislbl)
+
 #Background Utama
-background_utama = ImageTk.PhotoImage(file='WhatsApp Image 2021-08-16 at 00.07.45.jpeg')
+background_utama = ImageTk.PhotoImage(file='background1285_2entry.jpg')
 bckgrd_image = tkinter.Label(window, image=background_utama)
 bckgrd_image.place(x=0,y=0,relwidth=1,relheight=1)
 
@@ -90,27 +99,25 @@ button_generate = tkinter.PhotoImage(file='btn_generate.png')
 btn_generate = tkinter.Button(window, image=button_generate, command=clickgenerate, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)
 btn_generate.place(x=237, y=350)
 
+#Button visual model
+btn_visualisasi = tkinter.PhotoImage(file='btn_visualisasi.png')
+button_visualisasi = tkinter.Button(window, image=btn_visualisasi, command = modelVisual, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)#, command=clickgenerate, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)
+button_visualisasi.place(x=170, y=400)
+
 #lbl Dummy Output (pop up)
 global lbl_output
 lbl_output = ttk.Label(window)
 lbl_output.place(x=428, y=69)
 
-# Frame Visualisasi Model
-frame_model = tkinter.LabelFrame(window, padx=200, pady=150, background='#ebe8eb', borderwidth=0)
-frame_model.place(x=780, y=173)
-
 # img visualisasi model
 global img
-load = Image.open("model.png")
-load = load.resize((430, 330), Image.ANTIALIAS)
-render = ImageTk.PhotoImage(load)
-img = tkinter.Label(window, image=render)
-img.configure()
-img.place(x=780, y=160)
+img = tkinter.Label(window)
+img.place(x=550, y=80)
 
-# Dummy Frame Visualisasi Model
-lbl_frame = tkinter.LabelFrame(frame_model)
-lbl_frame.pack()
+#label visualisasi
+global visLbl
+visLbl = tkinter.Label(window)
+visLbl.place(x=720, y = 50)
 
 window.mainloop()
 
