@@ -83,26 +83,26 @@ bckgrd_image.place(x=0,y=0,relwidth=1,relheight=1)
 
 #Entry Tinggi
 entry_tinggi = tkinter.Entry(window, font=('Josefin Sans', 17), bg="#ebe8eb", borderwidth=0)
-entry_tinggi.place(x=85, y=190, width=312, height=48)
+entry_tinggi.place(x=42, y=190, width=312, height=48)
 
 #Entry Berat
 entry_berat = tkinter.Entry(window, font=('Josefin Sans', 17), bg="#ebe8eb", borderwidth=0)
-entry_berat.place(x=85, y=275, width=312, height=48)
+entry_berat.place(x=42, y=275, width=312, height=48)
 
 #Button Clear
 button_clear = tkinter.PhotoImage(file='btn_clear.png')
 btn_clear = tkinter.Button(window, image=button_clear, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0, command=clickclear)
-btn_clear.place(x=106, y=350)
+btn_clear.place(x=80, y=350)
 
 #Button Generate
 button_generate = tkinter.PhotoImage(file='btn_generate.png')
 btn_generate = tkinter.Button(window, image=button_generate, command=clickgenerate, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)
-btn_generate.place(x=237, y=350)
+btn_generate.place(x=211, y=350)
 
 #Button visual model
 btn_visualisasi = tkinter.PhotoImage(file='btn_visualisasi.png')
 button_visualisasi = tkinter.Button(window, image=btn_visualisasi, command = modelVisual, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)#, command=clickgenerate, bg="#f8f4f4", activebackground="#f8f4f4", borderwidth=0)
-button_visualisasi.place(x=170, y=400)
+button_visualisasi.place(x=140, y=400)
 
 #lbl Dummy Output (pop up)
 global lbl_output
