@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split # Import train_test_split function
 
 # #Mengambil dataset
-df = pd.read_csv('weight-height.csv')
+df = pd.read_csv('prediksi_gender.csv')
 
 def hide_label(widget):
     widget.place_forget()
@@ -16,9 +16,9 @@ def hide_label(widget):
 #Def generate
 def clickgenerate():
     # # Mengambil feature dan target
-    feature_cols = ['Height', 'Weight']
+    feature_cols = ['tinggi', 'berat', 'ukuran_sepatu']
     X = df[feature_cols]
-    y = df['Gender']
+    y = df['gender']
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)  # 70% training and 30% test
 
@@ -35,7 +35,7 @@ def clickgenerate():
     # # memasukkan data baru untuk di prediksi
     # # memanggil metode predict([data])
     databaru = []
-    databaru.extend([entry_tinggi.get(), entry_berat.get()])
+    databaru.extend([entry_tinggi.get(), entry_berat.get(), entry_sepatu.get()])
     y_pred = clf.predict([databaru])  # Ditampilkan untuk hasil prediksi
     print("Input Data : ",databaru)
     print("Output Data : ",y_pred)
@@ -49,6 +49,7 @@ def clickgenerate():
 def clickclear():
     entry_tinggi.delete(0, END)
     entry_berat.delete(0, END)
+    entry_sepatu.delete(0,END)
     lbl_output.configure(image = "", background='#f8f4f4' )
     img.configure(image = "")
     visLbl.configure(image = "", background='#f8f4f4')
@@ -69,7 +70,7 @@ logo_wanita = "output_wanita.png"
 img_pria = ImageTk.PhotoImage(Image.open(logo_pria))
 img_wanita = ImageTk.PhotoImage(Image.open(logo_wanita))
 
-visImage = Image.open("model.png")
+visImage = Image.open("WhatsApp Image 2021-08-17 at 10.44.38.jpeg")
 visImageResize = visImage.resize((500, 400), Image.ANTIALIAS)
 imgVis = ImageTk.PhotoImage(visImageResize)
 
